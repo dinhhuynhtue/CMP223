@@ -36,15 +36,14 @@ namespace Model.Data_Adapter_Object
                     user.Password = entity.Password;
                 }
                 user.Email = entity.Email;
+                user.Administrator = entity.Administrator;
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
                 return false;
             }
-
         }
         public User GetByUserID(string userName)
         {

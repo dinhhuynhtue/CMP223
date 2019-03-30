@@ -20,6 +20,31 @@ namespace CMP223.Areas.Admin.Controllers
             return View(model);
         }
         [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new UserDAO();
+                var encryptedMD5Password = Encryptor.MD5Hash(user.Password);
+                user.Password = encryptedMD5Password;
+                long id = dao.Insert(user);
+                if (id > 0)
+                {
+                    return RedirectToAction("Create", "User");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Create successed");
+                }
+            }
+            return View("Index");
+        }
+        [HttpGet]
         public ActionResult Edit(long id)
         {
             var user = new UserDAO().ViewDetail(id);
@@ -44,35 +69,10 @@ namespace CMP223.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhật user không thành công");
+                    ModelState.AddModelError("", "Update unsuccessed");
                 }
             }
             return RedirectToAction("Index", "User");
-        }
-        [HttpGet]
-        public ActionResult Create()
-        {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Create(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                var dao = new UserDAO();
-                var encryptedMD5Password = Encryptor.MD5Hash(user.Password);
-                user.Password = encryptedMD5Password;
-                long id = dao.Insert(user);
-                if (id > 0)
-                {
-                    return RedirectToAction("Create", "User");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Create successed");
-                }
-            }
-            return View("Index");
         }
     }
 }
