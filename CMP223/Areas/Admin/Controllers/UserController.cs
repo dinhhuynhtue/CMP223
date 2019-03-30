@@ -43,7 +43,7 @@ namespace CMP223.Areas.Admin.Controllers
                     ModelState.AddModelError("", "Create unsuccessed");
                 }
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "User");
         }
         [HttpGet]
         public ActionResult Edit(long id)

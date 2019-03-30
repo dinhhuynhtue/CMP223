@@ -16,21 +16,24 @@ namespace Model.Entity_Framework
         }
 
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public short Dish_ID { get; set; }
 
         public short Type_ID { get; set; }
 
+        [Required]
         [StringLength(100)]
         public string Name { get; set; }
 
-        public float? Price { get; set; }
+        public decimal Price { get; set; }
 
-        [StringLength(255)]
+        [Column(TypeName = "ntext")]
         public string Detail { get; set; }
 
-        [Column(TypeName = "text")]
+        [StringLength(255)]
         public string Images { get; set; }
+
+        [StringLength(500)]
+        public string Description { get; set; }
 
         public virtual FoodType FoodType { get; set; }
 

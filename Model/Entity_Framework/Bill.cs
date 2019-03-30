@@ -12,7 +12,6 @@ namespace Model.Entity_Framework
         [Key]
         public long Bill_ID { get; set; }
 
-        [Required]
         [StringLength(10)]
         public string Discount_ID { get; set; }
 

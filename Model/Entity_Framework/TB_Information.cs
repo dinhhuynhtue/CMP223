@@ -21,11 +21,11 @@ namespace Model.Entity_Framework
 
         public long Customer_ID { get; set; }
 
+        public byte Tb_Seats { get; set; }
+
+        public DateTime DateSet { get; set; }
+
         public long CreatedBy { get; set; }
-
-        public byte? Tb_Seats { get; set; }
-
-        public DateTime? DateSet { get; set; }
 
         public DateTime? CreatedDate { get; set; }
 

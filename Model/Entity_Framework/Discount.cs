@@ -19,7 +19,7 @@ namespace Model.Entity_Framework
         [StringLength(10)]
         public string Discount_ID { get; set; }
 
-        public double? Rate { get; set; }
+        public double Rate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }

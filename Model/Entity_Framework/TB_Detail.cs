@@ -18,7 +18,7 @@ namespace Model.Entity_Framework
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         public short Dish_ID { get; set; }
 
-        public byte? Quantity { get; set; }
+        public byte Quantity { get; set; }
 
         public virtual Dish Dish { get; set; }
 

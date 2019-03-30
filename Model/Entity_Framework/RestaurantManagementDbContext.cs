@@ -17,6 +17,7 @@ namespace Model.Entity_Framework
         public virtual DbSet<Discount> Discounts { get; set; }
         public virtual DbSet<Dish> Dishes { get; set; }
         public virtual DbSet<FoodType> FoodTypes { get; set; }
+        public virtual DbSet<Subcribe> Subcribes { get; set; }
         public virtual DbSet<Table> Tables { get; set; }
         public virtual DbSet<TB_Detail> TB_Detail { get; set; }
         public virtual DbSet<TB_Information> TB_Information { get; set; }
@@ -45,14 +46,9 @@ namespace Model.Entity_Framework
                 .Property(e => e.Discount_ID)
                 .IsUnicode(false);
 
-            modelBuilder.Entity<Discount>()
-                .HasMany(e => e.Bills)
-                .WithRequired(e => e.Discount)
-                .WillCascadeOnDelete(false);
-
             modelBuilder.Entity<Dish>()
-                .Property(e => e.Images)
-                .IsUnicode(false);
+                .Property(e => e.Price)
+                .HasPrecision(18, 0);
 
             modelBuilder.Entity<Dish>()
                 .HasMany(e => e.TB_Detail)
@@ -63,6 +59,10 @@ namespace Model.Entity_Framework
                 .HasMany(e => e.Dishes)
                 .WithRequired(e => e.FoodType)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Subcribe>()
+                .Property(e => e.Email)
+                .IsUnicode(false);
 
             modelBuilder.Entity<TB_Information>()
                 .HasMany(e => e.Bills)

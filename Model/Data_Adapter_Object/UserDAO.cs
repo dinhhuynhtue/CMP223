@@ -42,6 +42,7 @@ namespace Model.Data_Adapter_Object
                 }
                 user.Email = entity.Email;
                 user.Administrator = entity.Administrator;
+                user.ModifiedDate = DateTime.Now;
                 db.SaveChanges();
                 return true;
             }

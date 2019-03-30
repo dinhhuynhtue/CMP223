@@ -63,6 +63,7 @@
     <Compile Include="Entity_Framework\Dish.cs" />
     <Compile Include="Entity_Framework\FoodType.cs" />
     <Compile Include="Entity_Framework\RestaurantManagementDbContext.cs" />
+    <Compile Include="Entity_Framework\Subcribe.cs" />
     <Compile Include="Entity_Framework\Table.cs" />
     <Compile Include="Entity_Framework\TB_Detail.cs" />
     <Compile Include="Entity_Framework\TB_Information.cs" />

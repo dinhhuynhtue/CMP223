@@ -18,9 +18,11 @@ namespace Model.Entity_Framework
         [Key]
         public long Customer_ID { get; set; }
 
+        [Required]
         [StringLength(255)]
         public string Name { get; set; }
 
+        [Required]
         [StringLength(11)]
         public string Phone { get; set; }
 

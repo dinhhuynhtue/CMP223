@@ -15,9 +15,9 @@ namespace Model.Entity_Framework
 
         public long? TB_ID { get; set; }
 
-        public byte? Seats { get; set; }
+        public byte Seats { get; set; }
 
-        public bool? Status { get; set; }
+        public bool Status { get; set; }
 
         public virtual TB_Information TB_Information { get; set; }
     }
