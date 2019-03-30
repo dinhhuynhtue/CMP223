@@ -13,11 +13,37 @@ namespace CMP223.Areas.Admin.Controllers
     public class UserController : BaseController
     {
         // GET: Admin/User
-        public ActionResult Index(int page = 1, int pageSize = 10)
+        public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             var dao = new UserDAO();
-            var model = dao.ListAllPaging(page, pageSize);
+            var model = dao.ListAllPaging(searchString, page, pageSize);
+            ViewBag.SearchString = searchString;
             return View(model);
+        }
+        [HttpGet]
+        public ActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public ActionResult Create(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new UserDAO();
+                var encryptedMD5Password = Encryptor.MD5Hash(user.Password);
+                user.Password = encryptedMD5Password;
+                long id = dao.Insert(user);
+                if (id > 0)
+                {
+                    return RedirectToAction("Index", "User");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Create unsuccessed");
+                }
+            }
+            return RedirectToAction("Index");
         }
         [HttpGet]
         public ActionResult Edit(long id)
@@ -44,35 +70,16 @@ namespace CMP223.Areas.Admin.Controllers
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Cập nhật user không thành công");
+                    ModelState.AddModelError("", "Update unsuccessed");
                 }
             }
             return RedirectToAction("Index", "User");
         }
-        [HttpGet]
-        public ActionResult Create()
+        [HttpDelete]
+        public ActionResult Delete(int id)
         {
-            return View();
-        }
-        [HttpPost]
-        public ActionResult Create(User user)
-        {
-            if (ModelState.IsValid)
-            {
-                var dao = new UserDAO();
-                var encryptedMD5Password = Encryptor.MD5Hash(user.Password);
-                user.Password = encryptedMD5Password;
-                long id = dao.Insert(user);
-                if (id > 0)
-                {
-                    return RedirectToAction("Create", "User");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "Create successed");
-                }
-            }
-            return View("Index");
+            new UserDAO().Delete(id);
+            return RedirectToAction("Index","User");
         }
     }
 }

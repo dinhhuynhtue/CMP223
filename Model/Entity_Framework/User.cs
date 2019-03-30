@@ -23,7 +23,6 @@ namespace Model.Entity_Framework
         [StringLength(50)]
         public string Username { get; set; }
 
-        [Required]
         [StringLength(32)]
         public string Password { get; set; }
 

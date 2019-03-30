@@ -21,9 +21,14 @@ namespace Model.Data_Adapter_Object
             db.SaveChanges();
             return entity.User_ID;
         }
-        public IEnumerable<User> ListAllPaging(int page, int pageSize)
+        public IEnumerable<User> ListAllPaging(string searchString, int page, int pageSize)
         {
-            return db.Users.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
+            IQueryable<User> model = db.Users;
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                model = model.Where(x => x.Username.Contains(searchString) || x.Name.Contains(searchString) || x.Email.Contains(searchString));
+            }
+            return model.OrderBy(x => x.Name).ToPagedList(page, pageSize);
         }
         public bool Update(User entity)
         {
@@ -36,15 +41,28 @@ namespace Model.Data_Adapter_Object
                     user.Password = entity.Password;
                 }
                 user.Email = entity.Email;
+                user.Administrator = entity.Administrator;
                 db.SaveChanges();
                 return true;
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-
                 return false;
             }
-
+        }
+        public bool Delete(int id)
+        {
+            try
+            {
+                var user = db.Users.Find(id);
+                db.Users.Remove(user);
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
         public User GetByUserID(string userName)
         {
