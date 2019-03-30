@@ -6,22 +6,54 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 namespace CMP223.Areas.Admin.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         // GET: Admin/User
-        public ActionResult Index()
+        public ActionResult Index(int page = 1, int pageSize = 10)
         {
-            return View();
+            var dao = new UserDAO();
+            var model = dao.ListAllPaging(page, pageSize);
+            return View(model);
         }
-
+        [HttpGet]
+        public ActionResult Edit(long id)
+        {
+            var user = new UserDAO().ViewDetail(id);
+            return View(user);
+        }
+        [HttpPost]
+        public ActionResult Edit(User user)
+        {
+            if (ModelState.IsValid)
+            {
+                var dao = new UserDAO();
+                if (!string.IsNullOrEmpty(user.Password))
+                {
+                    var encryptedMd5Pas = Encryptor.MD5Hash(user.Password);
+                    user.Password = encryptedMd5Pas;
+                }
+                var result = dao.Update(user);
+                if (result)
+                {
+                    //SetAlert("Sửa user thành công", "success");
+                    return RedirectToAction("Index", "User");
+                }
+                else
+                {
+                    ModelState.AddModelError("", "Cập nhật user không thành công");
+                }
+            }
+            return RedirectToAction("Index", "User");
+        }
         [HttpGet]
         public ActionResult Create()
         {
             return View();
-        } 
+        }
         [HttpPost]
         public ActionResult Create(User user)
         {

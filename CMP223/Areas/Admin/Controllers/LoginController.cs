@@ -21,7 +21,7 @@ namespace CMP223.Areas.Admin.Controllers
                 var result = dao.Login(model.UserName, Encryptor.MD5Hash(model.Password));
                 if (result == 1)
                 {
-                    var user = dao.GetByUserName(model.UserName);
+                    var user = dao.GetByUserID(model.UserName);
                     var userSession = new UserLogin();
                     userSession.UserName = user.Username;
                     userSession.UserID = user.User_ID;

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.Entity_Framework;
+using PagedList;
 
 namespace Model.Data_Adapter_Object
 {
@@ -20,9 +21,38 @@ namespace Model.Data_Adapter_Object
             db.SaveChanges();
             return entity.User_ID;
         }
-        public User GetByUserName(string userName)
+        public IEnumerable<User> ListAllPaging(int page, int pageSize)
+        {
+            return db.Users.OrderByDescending(x => x.Name).ToPagedList(page, pageSize);
+        }
+        public bool Update(User entity)
+        {
+            try
+            {
+                var user = db.Users.Find(entity.User_ID);
+                user.Name = entity.Name;
+                if (!string.IsNullOrEmpty(entity.Password))
+                {
+                    user.Password = entity.Password;
+                }
+                user.Email = entity.Email;
+                db.SaveChanges();
+                return true;
+            }
+            catch (Exception ex)
+            {
+
+                return false;
+            }
+
+        }
+        public User GetByUserID(string userName)
         {
             return db.Users.SingleOrDefault(X => X.Username == userName);
+        }
+        public User ViewDetail(long id)
+        {
+            return db.Users.Find(id);
         }
         public int Login(string userName, string password)
         {
