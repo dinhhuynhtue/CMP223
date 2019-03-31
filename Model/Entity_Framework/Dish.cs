@@ -35,6 +35,8 @@ namespace Model.Entity_Framework
         [StringLength(500)]
         public string Description { get; set; }
 
+        public DateTime TopHot { get; set; }
+
         public virtual FoodType FoodType { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
