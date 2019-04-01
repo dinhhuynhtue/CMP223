@@ -2827,8 +2827,8 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\HomePage\HomePage.cshtml" />
-    <Content Include="Views\MENU\Index.cshtml" />
-    <Content Include="Views\MENU\TypeFood.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
+    <Content Include="Views\Menu\TypeFood.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Shared\NEWWORLD_Layout.cshtml" />
   </ItemGroup>
