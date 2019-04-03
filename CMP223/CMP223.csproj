@@ -2499,8 +2499,12 @@
     <Content Include="Assets\Administrator\vendor\jquery\jquery.min.js" />
     <Content Include="Assets\Administrator\vendor\jquery\jquery.slim.js" />
     <Content Include="Assets\Administrator\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Assets\Client\booking\bootstrap.min.css" />
+    <Content Include="Assets\Client\booking\style.css" />
     <Content Include="Assets\Client\css\animate.css" />
     <Content Include="Assets\Client\css\bootstrap-datepicker.min.css" />
+    <Content Include="Assets\Client\css\bootstrap-datetimepicker-standalone.css" />
+    <Content Include="Assets\Client\css\bootstrap-datetimepicker.css" />
     <Content Include="Assets\Client\css\bootstrap-datetimepicker.min.css" />
     <Content Include="Assets\Client\css\bootstrap.css" />
     <Content Include="Assets\Client\css\default-theme.css" />
@@ -2532,7 +2536,10 @@
     <Content Include="Assets\Client\images\img_bg_1.jpg" />
     <Content Include="Assets\Client\images\img_bg_3.jpg" />
     <Content Include="Assets\Client\images\loader.gif" />
+    <Content Include="Assets\Client\images\math-83288-unsplash.jpg" />
     <Content Include="Assets\Client\images\menu.jpg" />
+    <Content Include="Assets\Client\images\footer.jpg" />
+    <Content Include="Assets\Client\images\restaurant.jpg" />
     <Content Include="Assets\Client\js\bootstrap-datepicker.min.js" />
     <Content Include="Assets\Client\js\bootstrap-datetimepicker.min.js" />
     <Content Include="Assets\Client\js\bootstrap.min.js" />

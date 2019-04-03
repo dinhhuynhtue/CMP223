@@ -154,7 +154,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Data_Adapter_Object\DishFoodTypeDao.cs" />
     <Compile Include="Data_Adapter_Object\DishHomeDao.cs" />
     <Compile Include="Data_Adapter_Object\MenuDAO.cs" />
     <Compile Include="Data_Adapter_Object\UserDAO.cs" />
