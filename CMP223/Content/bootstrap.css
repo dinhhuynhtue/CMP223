@@ -2996,6 +2996,9 @@ input[type="reset"].btn-block,
 input[type="button"].btn-block {
   width: 100%;
 }
+fade.in {
+    opacity: 1;
+}
 
 .fade {
   transition: opacity 0.15s linear;

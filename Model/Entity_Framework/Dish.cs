@@ -39,6 +39,8 @@ namespace Model.Entity_Framework
 
         public virtual FoodType FoodType { get; set; }
 
+        public IEnumerable<Dish> Dishes { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_Detail> TB_Detail { get; set; }
     }

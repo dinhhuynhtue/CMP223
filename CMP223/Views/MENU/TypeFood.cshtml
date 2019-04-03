@@ -1,10 +1,12 @@
 ﻿@model IEnumerable<Model.Entity_Framework.FoodType>
 
+
 <ul class="nav nav-tabs mu-restaurant-menu">
 
     @foreach (var item in Model)
     {
-        <li class="@(item.Type_ID == 1 ? "active" : "")"><a href="@item.Type_ID" data-toggle="tab">@item.Name</a></li>
+        <li class="@(item.Type_ID == 1 ? "active" : "")"><a href="#@item.Type_ID" data-target="@item.Name"  data-toggle="tab">@item.Name</a></li>
+
     }
 
 </ul>

@@ -4,13 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Model.Entity_Framework;
+using System.Data.Entity;
 
 namespace Model.Data_Adapter_Object
 {
     public class MenuDAO
     {
         RestaurantManagementDbContext db = null;
-       public MenuDAO()
+
+
+        public MenuDAO()
         {
             db = new RestaurantManagementDbContext();
         }
@@ -19,5 +22,21 @@ namespace Model.Data_Adapter_Object
         {
             return db.FoodTypes.OrderBy(x=>x.Type_ID).ToList();
         }
+
+        public List<Dish> ListDish()
+        {
+            return db.Dishes.ToList();
+        }
+
+        
+        /// <summary>
+        /// Get list Dish by Type ID
+        /// </summary>
+        /// <param name="typeID"></param>
+        /// <returns></returns>
+     
+
+
+       
     }
 }
