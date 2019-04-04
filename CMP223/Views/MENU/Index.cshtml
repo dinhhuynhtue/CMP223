@@ -14,7 +14,7 @@
 <html>
 
 <head>
-
+    <script src="~/Scripts/Bootstrap/js/bootstrap_menu.js"></script>
 </head>
 <body>
 
@@ -54,14 +54,14 @@
 
                         
                         <div class="mu-restaurant-menu-content">
-                            @*@{Html.RenderAction("TypeFood", "Menu"}*@
                             
                             <ul class="nav nav-tabs mu-restaurant-menu">
+                                
                                 @foreach (var type in dishtypes)
                                 {
                                     @*<li class="active"><a href="#breakfast" data-toggle="tab">Breakfast</a></li>*@
                                     <li class="@(type.Type_ID == 1 ? "active" : "")">
-                                        <a href="#@type.Type_ID" data-target="@type.Name" data-toggle="tab">@type.Name</a>
+                                        <a href="#@type.Type_ID" data-target="@type.Type_ID " data-toggle="tab">@type.Name</a>
                                     </li>
                                 }
                             </ul>
@@ -70,10 +70,12 @@
                                 <!-- Tab panes -->
 
                                 <div class="tab-content">
+                                    
                                     @foreach (var item in dishes)
                                     {
-                                        <div class="tab-pane fade @(item.Type_ID == 1 ? " active in": "")" id="@item.Type_ID">
-                                            <div class="mu-tab-content-area">
+                                        <div id=" @item.Type_ID" class="tab-pane fade in active " data-target="@item.Type_ID" >
+                                            <div class="mu-tab-content-area" >
+
                                                 <div class="row">
                                                     <div class="col-md-6">
                                                         <div class="mu-tab-content-left">
@@ -118,6 +120,7 @@
                                                 </div>
                                             </div>
                                         </div>
+                                       
                                     }
 
                                 </div>

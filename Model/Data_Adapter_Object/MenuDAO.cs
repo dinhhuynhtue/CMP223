@@ -25,7 +25,7 @@ namespace Model.Data_Adapter_Object
 
         public List<Dish> ListDish()
         {
-            return db.Dishes.ToList();
+            return db.Dishes.OrderBy(x=>x.Type_ID).ToList();
         }
 
         

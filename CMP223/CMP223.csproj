@@ -2590,6 +2590,7 @@
     <Content Include="Scripts\Bootstrap\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Scripts\Bootstrap\js\bootstrap.js" />
     <Content Include="Scripts\Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Scripts\Bootstrap\js\bootstrap_menu.js" />
     <Content Include="Scripts\Bootstrap\js\npm.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
