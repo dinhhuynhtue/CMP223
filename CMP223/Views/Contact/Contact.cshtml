@@ -3,20 +3,15 @@
     ViewBag.Title = "Contact";
     Layout = "~/Views/Shared/NEWWORLD_Layout.cshtml";
 }
-
 <html>
 <head>
+    <script src="~/Assets/Client/js/Controller/ContactController.js"></script>
 
-
-</head> 
-
+</head>
 <body>
-
     <div class="gtco-loader"></div>
-
     <div id="page">
-
-        <!-- <div class="page-inner"> -->
+        <!--<div class="page-inner"> -->
         @*<nav class="gtco-nav" role="navigation">
                 <div class="gtco-container">
 
@@ -43,25 +38,22 @@
 
                 </div>
             </nav>*@
-
-        <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url(images/img_bg_3.jpg)">
+        <header id="gtco-header" class="gtco-cover gtco-cover-md" role="banner" style="background-image: url('../../Assets/Client/images/menu.jpg');" data-stellar-background-ratio="0.5">
             <div class="overlay"></div>
             <div class="gtco-container">
                 <div class="row">
                     <div class="col-md-12 col-md-offset-0 text-center">
                         <div class="row row-mt-15em">
-                            @*<div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
-                                    <span class="intro-text-small">Hand-crafted by <a href="http://gettemplates.co" target="_blank">GetTemplates.co</a></span>
-
-                                </div>*@
-                            <h1 class="cursive-font">Say hello!</h1>
+                            <div class="col-md-12 mt-text animate-box" data-animate-effect="fadeInUp">
+                                
+                                <h1 class="cursive-font">Say hello!</h1>
+                            </div>
+                            
                         </div>
-
                     </div>
                 </div>
             </div>
         </header>
-
 
         <div class="gtco-section">
             <div class="gtco-container">
@@ -69,28 +61,31 @@
                     <div class="col-md-12">
                         <div class="col-md-6 animate-box">
                             <h3>Get In Touch</h3>
+                            <br />
                             <form action="#">
-                                <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label class="sr-only" for="name">Name</label>
-                                        <input type="text" id="name" class="form-control" placeholder="Your firstname">
-                                    </div>
 
+                                <!--<div class="row form-group">
+                                    <label class="sr-only" for="name">Name</label>
+                                    <input type="text" id="txtname" class="form-control" placeholder="Your firstname">
                                 </div>
                                 <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label class="sr-only" for="email">Email</label>
-                                        <input type="text" id="email" class="form-control" placeholder="Your email address">
-                                    </div>
+                                    <label class="sr-only" for="phone">Phone</label>
+                                    <input type="text" id="txtphone" class="form-control" placeholder="Your phone number">
                                 </div>
                                 <div class="row form-group">
-                                    <div class="col-md-12">
-                                        <label class="sr-only" for="message">Message</label>
-                                        <textarea name="message" id="message" cols="30" rows="10" class="form-control" placeholder="Write us something"></textarea>
-                                    </div>
+                                    <label class="sr-only" for="address">Address</label>
+                                    <input type="text" id="txtaddress" class="form-control" placeholder="Your address">
+                                </div>
+                                <div class="row form-group">
+                                    <label class="sr-only" for="email">Email</label>
+                                    <input type="text" id="txtemail" class="form-control" placeholder="Your email">
+                                </div>-->
+                                <div class="row form-group">
+                                    <label class="sr-only" for="detail">Detail</label>
+                                    <textarea id="txtdetail" cols="30" rows="15" class="form-control" placeholder="Write us something"></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" value="Send Message" class="btn btn-primary">
+                                    <input id="btnSend" type="submit"   class="btn btn-success" value="Send" />
                                 </div>
                             </form>
                         </div>
@@ -98,12 +93,17 @@
 
                             <div class="gtco-contact-info">
                                 <h3>Contact Information</h3>
+                                <br />
                                 <ul>
-                                    <li class="address">198 West 21th Street, <br> Suite 721 New York NY 10016</li>
-                                    <li class="phone"><a href="tel://1234567920">+ 1235 2355 98</a></li>
-                                    <li class="email"><a href="mailto:info@yoursite.com">info@yoursite.com</a></li>
+                                    <li class="address">No.13,  Road 85,  Hiep Phu Ward, <br /> District 9,  HCM City </li>
+                                    <li class="phone"><a href="tel: 0845893995">+ 84845893995</a></li>
+                                    <li class="email"><a href="mailto:thachthao2303@gmail.com">thachthao2303@gmail.com</a></li>
                                     <li class="url"><a href="http://FreeHTML5.co">FreeHTML5.co</a></li>
                                 </ul>
+                                <div id="maps1" class="w3-container maps">
+                                    <h3>Maps</h3>
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3918.523347161911!2d106.77543161432108!3d10.847742392273167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175270c8c1f2ff9%3A0xee089278f28586a6!2zMTMgxJDGsOG7nW5nIFPhu5EgODUsIEhp4buHcCBQaMO6LCBRdeG6rW4gOSwgSOG7kyBDaMOtIE1pbmgsIFZp4buHdCBOYW0!5e0!3m2!1svi!2s!4v1554005456322!5m2!1svi!2s" width="400" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+                                </div>
                             </div>
 
                         </div>
@@ -111,11 +111,11 @@
                 </div>
             </div>
         </div>
-        <footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
+
+        <!--<footer id="gtco-footer" role="contentinfo" style="background-image: url(images/img_bg_1.jpg)" data-stellar-background-ratio="0.5">
             <div class="overlay"></div>
             <div class="gtco-container">
                 <div class="row row-pb-md">
-
 
                     <div class="col-md-12 text-center">
                         <div class="gtco-widget">
@@ -143,15 +143,45 @@
                         </p>
                     </div>
                 </div>
-
             </div>
-        </footer>
-        <!-- </div> -->
+        </footer> -->
     </div>
     <div class="gototop js-top">
         <a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
     </div>
+    
+    <script>
+        $(document).ready((function () {
 
+            var contact = {
+                init: function () {
+                    contact.registerEvents();
+                },
+                registerEvents: function () {
+                    $('#btnSend').off('click').on('click', function () {
+                        var detail = $('#txtdetail').val();
+
+                        $.ajax({
+                            url: '/Contact/Send',
+                            type: 'POST',
+                            dataType: 'json',
+                            data: {
+                                detail: detail
+                            },
+                            success: function (res) {
+                                if (res.status == true) {
+                                    window.alert('Gửi thành công');
+                                }
+                            }
+                        });
+                    });
+                }
+            }
+            contact.init();
+        }))
+    </script>
+
+    <script src="~/Scripts/jquery-3.3.1.min.js"></script>
     <!-- jQuery -->
     <script src="js/jquery.min.js"></script>
     <!-- jQuery Easing -->
@@ -169,12 +199,11 @@
     <!-- Magnific Popup -->
     <script src="js/jquery.magnific-popup.min.js"></script>
     <script src="js/magnific-popup-options.js"></script>
-
     <script src="js/moment.min.js"></script>
     <script src="js/bootstrap-datetimepicker.min.js"></script>
-
     <!-- Main -->
     <script src="js/main.js"></script>
+    <!-- Contact -->
+
 </body>
 </html>
-

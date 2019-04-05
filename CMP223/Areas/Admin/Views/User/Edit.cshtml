@@ -1,12 +1,17 @@
 ﻿@model Model.Entity_Framework.User
 
 @{
-    ViewBag.Title = "Edit infomation";
+    ViewBag.Title = "Edit staff information";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
+@section Title{
+    Edit staff information
+}
+
+
 @section Header{
-    Edit infomation
+    Edit staff information
 }
 <div class="row">
     <div class="col-lg-12">
@@ -69,5 +74,8 @@
             </div>
         </div>
     </div>
+</div>
+<div>
+    @Html.ActionLink("Back to List", "Index")
 </div>
 

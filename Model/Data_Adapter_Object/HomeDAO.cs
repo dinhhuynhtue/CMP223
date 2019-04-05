@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 using Model.Entity_Framework;
 namespace Model.Data_Adapter_Object
 {
-    public class DishHomeDao
+    public class HomeDAO
     {
         RestaurantManagementDbContext db = null;
-        public DishHomeDao()
+        public HomeDAO()
         {
             db = new RestaurantManagementDbContext();
         }
 
-        public List<Dish>ListHotDish(int top)
+        public List<Dish> DishesList(int top)
         {
-            return db.Dishes.Where(x => x.TopHot != null && x.TopHot > DateTime.Now).OrderByDescending(x=>x.TopHot).Take(top).ToList();
+            return db.Dishes.Where(x => x.TopHot == true).OrderByDescending(x => x.TopHot).Take(top).ToList();
         }
     }
 }

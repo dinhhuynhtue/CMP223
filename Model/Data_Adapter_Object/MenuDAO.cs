@@ -18,9 +18,9 @@ namespace Model.Data_Adapter_Object
             db = new RestaurantManagementDbContext();
         }
 
-        public List<FoodType> ListAll()
+        public List<DishType> ListAll()
         {
-            return db.FoodTypes.OrderBy(x=>x.Type_ID).ToList();
+            return db.DishTypes.OrderBy(x => x.Type_ID).ToList();
         }
 
         public List<Dish> ListDish()

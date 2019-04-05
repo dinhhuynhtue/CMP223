@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Model.Entity_Framework.Discount>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Discount list";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Title{
+    Discount list
+}
+
+@section Header{
+    Discount list
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Discount data table</h6>
+            </div>
+            <div class="card-body">
+                @using (Html.BeginForm("Index", "Discount", FormMethod.Get))
+                {
+                    <div class="row form-group">
+                        <div class="col-lg-12">
+                            <div class="col-md-6">
+                                <a class="btn btn-primary" href="/Admin/Discount/Create">Create new discount</a>
+                            </div>
+                        </div>
+                    </div>
+                }
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                            <tr>
+                                <th>Discount ID</th>
+                                <th>Rate</th>
+                                <th>#</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        @item.Discount_ID
+                                    </td>
+                                    <td>
+                                        @item.Rate
+                                    </td>
+                                    <td>
+                                        <a href="/Admin/Discount/Edit/@item.Discount_ID">Edit</a>
+                                        |
+                                        @Ajax.ActionLink("Delete", "Delete", new { @id = item.Discount_ID }, new AjaxOptions { Confirm = "Are you sure to delete this discount?", OnComplete = "$('#row_" + @item.Discount_ID + "').remove()", HttpMethod = "Delete" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

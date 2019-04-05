@@ -51,7 +51,7 @@ namespace Model.Data_Adapter_Object
                 return false;
             }
         }
-        public bool Delete(int id)
+        public bool Delete(long id)
         {
             try
             {

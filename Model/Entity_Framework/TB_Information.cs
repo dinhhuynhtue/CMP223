@@ -23,11 +23,16 @@ namespace Model.Entity_Framework
 
         public byte Tb_Seats { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime DateSet { get; set; }
 
-        public long CreatedBy { get; set; }
+        public TimeSpan TimeSet { get; set; }
+
+        public long? CreatedBy { get; set; }
 
         public DateTime? CreatedDate { get; set; }
+
+        public DateTime? ModifiedDate { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bill> Bills { get; set; }

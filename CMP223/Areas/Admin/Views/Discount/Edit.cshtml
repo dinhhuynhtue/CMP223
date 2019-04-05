@@ -1,0 +1,52 @@
+﻿@model Model.Entity_Framework.Discount
+
+@{
+    ViewBag.Title = "Edit discount information";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Title{
+    Edit discount information
+}
+
+@section Header{
+    Edit discount information
+}
+
+@using (Html.BeginForm("Edit", "Discount", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Discount</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Discount_ID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.Discount_ID, new { @class = "form-control form-control-user", @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.Discount_ID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Rate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.Rate, new { @class = "form-control form-control-user", @placeholder = "Enter new discount rate" })
+                @Html.ValidationMessageFor(model => model.Rate, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-4">
+                <button type="submit" class="btn btn-primary btn-user btn-block">
+                    Save changed
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

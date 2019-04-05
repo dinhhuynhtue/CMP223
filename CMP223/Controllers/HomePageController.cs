@@ -12,7 +12,7 @@ namespace CMP233.Controllers
         // GET: Home
         public ActionResult HomePage()
         {
-            ViewBag.HotDish = new DishHomeDao().ListHotDish(6);
+            ViewBag.HotDish = new HomeDAO().DishesList(6);
             return View();
         }
 

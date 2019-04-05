@@ -13,6 +13,7 @@ namespace CMP223.Areas.Admin.Controllers
     public class UserController : BaseController
     {
         // GET: Admin/User
+        [HttpGet]
         public ActionResult Index(string searchString, int page = 1, int pageSize = 10)
         {
             var dao = new UserDAO();
@@ -36,11 +37,12 @@ namespace CMP223.Areas.Admin.Controllers
                 long id = dao.Insert(user);
                 if (id > 0)
                 {
+                    SetAlert("Create successfully", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Create unsuccessed");
+                    ModelState.AddModelError("", "Create unsuccessfully");
                 }
             }
             return RedirectToAction("Index", "User");
@@ -65,21 +67,26 @@ namespace CMP223.Areas.Admin.Controllers
                 var result = dao.Update(user);
                 if (result)
                 {
-                    //SetAlert("Sửa user thành công", "success");
+                    SetAlert("Update successfully", "success");
                     return RedirectToAction("Index", "User");
                 }
                 else
                 {
-                    ModelState.AddModelError("", "Update unsuccessed");
+                    ModelState.AddModelError("", "Update unsuccessfully");
                 }
             }
             return RedirectToAction("Index", "User");
         }
         [HttpDelete]
-        public ActionResult Delete(int id)
+        public ActionResult Delete(long id)
         {
             new UserDAO().Delete(id);
-            return RedirectToAction("Index","User");
+            return RedirectToAction("Index", "User");
+        }
+        public ActionResult Logout()
+        {
+            Session[CommonConstants.USER_SESSION] = null;
+            return RedirectToAction("Index");
         }
     }
 }

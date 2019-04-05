@@ -6,11 +6,11 @@ namespace Model.Entity_Framework
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    [Table("FoodType")]
-    public partial class FoodType
+    [Table("DishType")]
+    public partial class DishType
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public FoodType()
+        public DishType()
         {
             Dishes = new HashSet<Dish>();
         }
@@ -28,8 +28,9 @@ namespace Model.Entity_Framework
         [StringLength(255)]
         public string Images { get; set; }
 
+        public DateTime? ModifiedDate { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Dish> Dishes { get; set; }
-
     }
 }

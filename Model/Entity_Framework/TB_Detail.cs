@@ -20,6 +20,8 @@ namespace Model.Entity_Framework
 
         public byte Quantity { get; set; }
 
+        public DateTime? ModifiedDate { get; set; }
+
         public virtual Dish Dish { get; set; }
 
         public virtual TB_Information TB_Information { get; set; }

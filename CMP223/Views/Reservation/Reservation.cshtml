@@ -1,0 +1,105 @@
+﻿@using CMP223.Models
+@model List<Reservation>
+
+@{
+    ViewBag.Title = "New World Restaurant - Reservation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <title>Booking Form HTML Template</title>
+
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans:400" rel="stylesheet">
+
+    <!-- Bootstrap -->
+    @*<link type="text/css" rel="stylesheet" href="~/Assets/Client/booking/bootstrap.min.css" />*@
+
+    <!-- Custom stlylesheet -->
+    <link type="text/css" rel="stylesheet" href="~/Assets/Client/booking/style.css" />
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+          <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+</head>
+<body>
+    <header id="gtco-header" class="gtco-cover gtco-cover-sm" role="banner" style="background-image: url('../../Assets/Client/images/restaurant.jpg');" data-stellar-background-ratio="0.5">
+        <div class="overlay"></div>
+        <div class="gtco-container text-center">
+
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0 table-center">
+                    <div class="row row-mt-8em" style="margin-top:8em">
+                        <div class="form-wrap">
+
+                            <div class="booking-form">
+                                <h1>Reservation infomation</h1>
+                                <hr>
+                                <table align="center" border="1" width="1000" height="200" class="table table-hover table-light">
+                                    <thead class="thead-dark">
+                                        <tr style="text-align:center; font-weight:bold">
+                                            <td>Dish ID</td>
+                                            <td>Name</td>
+                                            <td>Image</td>
+                                            <td>Quantity</td>
+                                            <td>Price</td>
+                                            <td>Total</td>
+                                            <td>#</td>
+                                            <td>#</td>
+                                        </tr>
+                                    </thead>
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr style="text-align:center; font-weight:bold">
+                                            <td> @item.DishID </td>
+                                            <td> @item.Name</td>
+                                            <td><img src="@item.Image" width="100"></td>
+                                            @using (Html.BeginForm("UpdateDish", "Reservation", new { @dishID = item.DishID }))
+                                            {
+                                                <td>
+                                                    <input type="number" min="1" name="txtQuantity" value="@item.Quantity" />
+                                                </td>
+                                                <td>@String.Format("{0:0,0}", item.Price) </td>
+                                                <td>@String.Format("{0:0,0}", item.Total) </td>
+                                                <td>@Html.ActionLink("Remove", "RemoveDish", new { @dishID = item.DishID }) </td>
+                                                <td><input type="submit" value="Edit" class="btn btn-primary btn-user btn-block"/></td>
+                                            }
+
+                                        </tr>
+                                    }
+                                    <tr style="text-align:center; font-weight:bold" class="table-secondary">
+                                        <td colspan="4">Total dishes: @ViewBag.TotalQuantity</td>
+                                        <td colspan="4">Total price: @String.Format("{0:0,0}", ViewBag.TotalPrice) VND</td>
+                                    </tr>
+                                </table>
+                                <a href="/Reservation/Book" class="btn btn-dark btn-user btn-block">Confirm</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </header>
+
+
+
+
+
+</body>
+
+
+</html>
+

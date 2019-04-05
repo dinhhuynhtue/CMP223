@@ -1,0 +1,77 @@
+﻿@model Model.Entity_Framework.DishType
+
+@{
+    ViewBag.Title = "Create dish type";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+@section Title{
+    Create dish type
+}
+
+@section Header{
+    Create dish type
+}
+@section jsFooter{
+    <script>
+        $('#btnSelectImage').on('click', function (e) {
+            e.preventDefault();
+            var finder = new CKFinder();
+            finder.selectActionFunction = function (url) {
+                $('#txtImage').val(url);
+            };
+            finder.popup();
+        })
+        var editor = CKEDITOR.replace('txtContent', {
+            customConfig: '/Assets/Administrator/js/plugins/ckeditor/config.js',
+        });
+    </script>
+}
+
+
+@using (Html.BeginForm("Create", "DishType", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Create dish type</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-4">
+                @Html.TextBoxFor(model => model.Name, new { @class = "form-control form-control-user" })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Detail, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextAreaFor(model => model.Detail, new { htmlAttributes = new { @class = "form-control form-control-user" }, id = "txtContent" })
+                @Html.ValidationMessageFor(model => model.Detail, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Images, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.Images, new { htmlAttributes = new { @class = "form-control form-control-user", @id = "txtImage" }, id = "txtImage" })
+                <button id="btnSelectImage" class="btn btn-primary" href="#">Select image</button>
+                @Html.ValidationMessageFor(model => model.Images, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-4 col-md-4">
+                <button type="submit" class="btn btn-primary btn-user btn-block">
+                    Create
+                </button>
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

@@ -16,12 +16,14 @@ namespace Model.Entity_Framework
         public virtual DbSet<Customer> Customers { get; set; }
         public virtual DbSet<Discount> Discounts { get; set; }
         public virtual DbSet<Dish> Dishes { get; set; }
-        public virtual DbSet<FoodType> FoodTypes { get; set; }
+        public virtual DbSet<DishType> DishTypes { get; set; }
+        public virtual DbSet<Service> Services { get; set; }
         public virtual DbSet<Subcribe> Subcribes { get; set; }
         public virtual DbSet<Table> Tables { get; set; }
         public virtual DbSet<TB_Detail> TB_Detail { get; set; }
         public virtual DbSet<TB_Information> TB_Information { get; set; }
         public virtual DbSet<User> Users { get; set; }
+        public virtual DbSet<Feedback> Feedbacks { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -48,16 +50,16 @@ namespace Model.Entity_Framework
 
             modelBuilder.Entity<Dish>()
                 .Property(e => e.Price)
-                .HasPrecision(18, 0);
+                .HasPrecision(20, 5);
 
             modelBuilder.Entity<Dish>()
                 .HasMany(e => e.TB_Detail)
                 .WithRequired(e => e.Dish)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<FoodType>()
+            modelBuilder.Entity<DishType>()
                 .HasMany(e => e.Dishes)
-                .WithRequired(e => e.FoodType)
+                .WithRequired(e => e.DishType)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Subcribe>()
@@ -94,9 +96,8 @@ namespace Model.Entity_Framework
 
             modelBuilder.Entity<User>()
                 .HasMany(e => e.TB_Information)
-                .WithRequired(e => e.User)
-                .HasForeignKey(e => e.CreatedBy)
-                .WillCascadeOnDelete(false);
+                .WithOptional(e => e.User)
+                .HasForeignKey(e => e.CreatedBy);
         }
     }
 }

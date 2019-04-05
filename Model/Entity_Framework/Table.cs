@@ -19,6 +19,8 @@ namespace Model.Entity_Framework
 
         public bool Status { get; set; }
 
+        public DateTime? ModifiedDate { get; set; }
+
         public virtual TB_Information TB_Information { get; set; }
     }
 }

@@ -1,11 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using Model.Data_Adapter_Object;
-using Model.Entity_Framework;
-using Syncfusion.EJ2.Navigations;
 
 
 namespace CMP233.Controllers
@@ -25,13 +19,10 @@ namespace CMP233.Controllers
 
 
         [ChildActionOnly]
-        public PartialViewResult TypeFood()
+        public PartialViewResult DishType()
         {
             var model = new MenuDAO().ListAll();
             return PartialView(model);
         }
-
-
-
     }
 }

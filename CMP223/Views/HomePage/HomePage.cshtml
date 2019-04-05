@@ -1,4 +1,5 @@
-﻿@{
+﻿@model Model.Entity_Framework.Customer
+@{
     ViewBag.Title = "NewWorld";
     Layout = "~/Views/Shared/NEWWORLD_Layout.cshtml";
     var listHotDish = (List<Model.Entity_Framework.Dish>)ViewBag.HotDish;
@@ -22,47 +23,44 @@
                             <h1 class="cursive-font">All in good taste!</h1>
                         </div>
                         <div class="col-md-4 col-md-push-1 animate-box" data-animate-effect="fadeInRight">
+
                             <div class="form-wrap">
                                 <div class="tab">
+                                    @using (Html.BeginForm("Create", "Reservation", FormMethod.Post, new { @class = "form-wrap" }))
+                                    {
+                                        <div class="tab-content">
+                                            <div class="tab-content-inner active" data-content="signup">
+                                                <h3 class="cursive-font">Table Reservation</h3>
+                                                <form action="#">
+                                                    <div class="row form-group">
+                                                        <div class="col-md-12">
+                                                            <label for="activities">Customer Name</label>
+                                                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Your name", @style = "background-color:transparent" })
+                                                            
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col-md-12">
+                                                            <label >Phone</label>
+                                                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Phone", @style = "background-color:transparent" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col-md-12">
+                                                            <label>Email Adress</label>
+                                                            @Html.TextBoxFor(model => model.Name, new { @class = "form-control", @placeholder = "Email", @style = "background-color:transparent" })
+                                                        </div>
+                                                    </div>
+                                                    <div class="row form-group">
+                                                        <div class="col-md-12">
+                                                            <input type="submit" class="btn btn-primary btn-block" value="Reserve Now">
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
 
-                                    <div class="tab-content">
-                                        <div class="tab-content-inner active" data-content="signup">
-                                            <h3 class="cursive-font">Table Reservation</h3>
-                                            <form action="#">
-                                                <div class="row form-group">
-                                                    <div class="col-md-12">
-                                                        <label for="activities">Persons</label>
-                                                        <select name="#" id="activities" class="form-control" style="background-color:transparent">
-                                                            <option value="">Persons</option>
-                                                            <option value="">1</option>
-                                                            <option value="">2</option>
-                                                            <option value="">3</option>
-                                                            <option value="">4</option>
-                                                            <option value="">5+</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col-md-12">
-                                                        <label for="date-start">Date</label>
-                                                        <input type="text" id="date" class="form-control" style="background-color:transparent">
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col-md-12">
-                                                        <label for="date-start">Time</label>
-                                                        <input type="text" id="time" class="form-control" style="background-color:transparent">
-                                                    </div>
-                                                </div>
-                                                <div class="row form-group">
-                                                    <div class="col-md-12">
-                                                        <input type="submit" class="btn btn-primary btn-block" value="Reserve Now">
-                                                    </div>
-                                                </div>
-                                            </form>
                                         </div>
-
-                                    </div>
+                                    }
                                 </div>
                             </div>
                         </div>
@@ -79,26 +77,26 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2 text-center gtco-heading">
                     <h2 class="cursive-font primary-color">Popular Dishes</h2>
-                    <p>Dignissimos asperiores vitae velit veniam totam fuga molestias accusamus alias autem provident. Odit ab aliquam dolor eius.</p>
+                    <p>____________________</p>
                 </div>
             </div>
             <div class="row">
                 @foreach (var item in listHotDish)
                 {
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <a href="@item.Images" class="fh5co-card-item image-popup">
-                    <figure>
-                        <div class="overlay"><i class="ti-plus"></i></div>
-                        <img src="@item.Images" alt="@item.Name" class="img-responsive">
-                    </figure>
-                    <div class="fh5co-text">
-                        <h2>@item.Name</h2>
-                        <p>@item.Description  </p>
-                        <p><span class="price cursive-font">@(item.Price.ToString("N0")) VNĐ</span></p>
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <a href="~/Views/Reservation/Index.cshtml" class="fh5co-card-item ">
+                            <figure>
+                                <div class="overlay"><i data-ng-click="addCart" class="ti-plus" id="addCart"></i></div>
+                                <img src="@item.Images" alt="@item.Name" class="img-responsive">
+                            </figure>
+                            <div class="fh5co-text">
+                                <h2>@item.Name</h2>
+                                <p>@item.Description  </p>
+                                <p><span class="price cursive-font">@(item.Price.ToString("N0")) VNĐ</span></p>
+                            </div>
+                        </a>
                     </div>
-                </a>
-            </div>
-        }
+                }
 
 
             </div>

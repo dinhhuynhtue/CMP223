@@ -35,11 +35,11 @@ namespace Model.Entity_Framework
         [StringLength(500)]
         public string Description { get; set; }
 
-        public DateTime TopHot { get; set; }
+        public DateTime? ModifiedDate { get; set; }
 
-        public virtual FoodType FoodType { get; set; }
+        public bool TopHot { get; set; }
 
-        public IEnumerable<Dish> Dishes { get; set; }
+        public virtual DishType DishType { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TB_Detail> TB_Detail { get; set; }

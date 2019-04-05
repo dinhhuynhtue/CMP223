@@ -26,7 +26,7 @@ namespace CMP223.Areas.Admin.Controllers
                     userSession.UserName = user.Username;
                     userSession.UserID = user.User_ID;
                     Session.Add(CommonConstants.USER_SESSION, userSession);
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Index", "User");
                 }
                 else if(result == 0)
                 {
